@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { Observable } from 'rxjs';
+import { UserProfile } from '../../models/user-profile.model';
 
 @Injectable({
   providedIn: 'root',
@@ -43,5 +44,9 @@ export class AuthService {
       'https://localhost:7174/api/users/upload-profile-picture',
       formData
     );
+  }
+
+  getUserProfile(): Observable<UserProfile> {
+    return this.http.get<UserProfile>(`https://localhost:7174/api/users/me`);
   }
 }

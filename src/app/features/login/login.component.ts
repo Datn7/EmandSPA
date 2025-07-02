@@ -35,21 +35,16 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     if (this.form.invalid) return;
 
-    this.auth.login(this.form.value).subscribe({
-      next: (res) => {
-        console.log('Login success:', res);
-        alert('Login successful!');
-        this.router.navigate(['/profile']); // or your desired route
+    const credentials = this.form.value; // define credentials
+
+    this.auth.login(credentials).subscribe({
+      next: (response) => {
+        console.log('Login success:', response);
+        localStorage.setItem('token', response.token); // store token
+        this.router.navigate(['/profile']); // navigate after login
       },
       error: (err) => {
         console.error('Login error:', err);
-        alert(
-          'Login failed: ' +
-            (err.error?.message ||
-              JSON.stringify(err.error) ||
-              err.statusText ||
-              'Unknown error')
-        );
       },
     });
 
