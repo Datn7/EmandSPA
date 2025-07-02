@@ -1,0 +1,35 @@
+<nav class="navbar">
+  <div class="navbar-content">
+    <div class="logo-title">
+      <img src="assets/logo.png" alt="Emand Logo" />
+      <span>Emand Insurance</span>
+    </div>
+
+    <!-- Hamburger Icon -->
+    <button class="hamburger" (click)="toggleMenu()">
+      &#9776;
+      <!-- Unicode hamburger icon -->
+    </button>
+
+    <!-- Nav Links -->
+    <div class="nav-links" [class.open]="isMenuOpen">
+      <a routerLink="/" routerLinkActive="active-link">Home</a>
+      <a routerLink="/policies" routerLinkActive="active-link">Policies</a>
+      <a routerLink="/claims" routerLinkActive="active-link">Claims</a>
+      <a routerLink="/providers" routerLinkActive="active-link">Providers</a>
+      <a routerLink="/health-content" routerLinkActive="active-link"
+        >Health Content</a
+      >
+
+      <ng-container *ngIf="authService.isLoggedIn(); else loggedOut">
+        <a routerLink="/profile" routerLinkActive="active-link">Profile</a>
+        <button (click)="logout()" class="logout-button">Logout</button>
+      </ng-container>
+
+      <ng-template #loggedOut>
+        <a routerLink="/login" routerLinkActive="active-link">Login</a>
+        <a routerLink="/register" routerLinkActive="active-link">Register</a>
+      </ng-template>
+    </div>
+  </div>
+</nav>
