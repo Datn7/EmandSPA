@@ -37,12 +37,22 @@ export class LoginComponent implements OnInit {
 
     this.auth.login(this.form.value).subscribe({
       next: (res) => {
-        this.auth.saveToken(res.token);
-        this.router.navigate(['/']); // Redirect to dashboard (to be created)
+        console.log('Login success:', res);
+        alert('Login successful!');
+        this.router.navigate(['/dashboard']); // or your desired route
       },
       error: (err) => {
-        alert('Login failed: ' + (err.error?.message || err.statusText));
+        console.error('Login error:', err);
+        alert(
+          'Login failed: ' +
+            (err.error?.message ||
+              JSON.stringify(err.error) ||
+              err.statusText ||
+              'Unknown error')
+        );
       },
     });
+
+    console.log('Form valid:', this.form.valid, this.form.value);
   }
 }
