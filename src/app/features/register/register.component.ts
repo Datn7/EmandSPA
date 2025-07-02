@@ -43,6 +43,21 @@ export class RegisterComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
+    // Set Leaflet icon paths
+    delete (L.Icon.Default.prototype as any)._getIconUrl;
+    L.Icon.Default.mergeOptions({
+      iconRetinaUrl: 'https://localhost:7174/leaflet/marker-icon-2x.png',
+      iconUrl: 'https://localhost:7174/leaflet/marker-icon.png',
+      shadowUrl: 'https://localhost:7174/leaflet/marker-shadow.png',
+    });
+
+    // Now safely initialize your map
+    const mapContainer = document.getElementById('map');
+    if (!mapContainer) {
+      console.error('Map container not found.');
+      return;
+    }
+
     const map = L.map('map').setView([41.7151, 44.8271], 13);
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
