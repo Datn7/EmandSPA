@@ -1,34 +1,22 @@
-<p>profile works!</p>
-<div
-  class="profile-container"
-  *ngIf="!loading && userProfile; else loadingOrError"
->
-  <div class="profile-card">
-    <img
-      *ngIf="userProfile.profilePictureUrl; else defaultPic"
-      [src]="userProfile.profilePictureUrl"
-      alt="Profile Picture"
-      class="profile-picture"
-    />
-    <ng-template #defaultPic>
-      <div class="default-picture">No Image</div>
-    </ng-template>
+<div *ngIf="loading" class="loading">Loading profile...</div>
+<div *ngIf="error" class="error-message">{{ error }}</div>
 
-    <h2>{{ userProfile.fullName }}</h2>
-    <p><strong>Email:</strong> {{ userProfile.email }}</p>
-    <p><strong>Gender:</strong> {{ userProfile.gender }}</p>
-    <p><strong>Date of Birth:</strong> {{ userProfile.dateOfBirth | date }}</p>
-    <p><strong>Address:</strong> {{ userProfile.address }}</p>
+<div *ngIf="userProfile" class="profile-card">
+  <img
+    [src]="userProfile.profilePictureUrl || 'assets/default-profile.png'"
+    alt="Profile Picture"
+    class="profile-picture"
+  />
+  <div class="profile-name">{{ userProfile.fullName }}</div>
+  <div class="profile-email">{{ userProfile.email }}</div>
+
+  <div class="profile-details">
+    <p><span>Date of Birth:</span> {{ userProfile.dateOfBirth | date }}</p>
+    <p><span>Gender:</span> {{ userProfile.gender }}</p>
+    <p><span>Address:</span> {{ userProfile.address }}</p>
     <p *ngIf="userProfile.latitude && userProfile.longitude">
-      <strong>Location:</strong> {{ userProfile.latitude }},
+      <span>Location:</span> {{ userProfile.latitude }},
       {{ userProfile.longitude }}
     </p>
-
-    <button routerLink="/edit-profile">Edit Profile</button>
   </div>
 </div>
-
-<ng-template #loadingOrError>
-  <div *ngIf="loading" class="loading">Loading profile...</div>
-  <div *ngIf="error" class="error">{{ error }}</div>
-</ng-template>
