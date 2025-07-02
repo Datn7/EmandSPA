@@ -29,6 +29,18 @@
     <label for="profilePicture">Profile Picture</label>
     <input id="profilePicture" type="file" (change)="onFileSelected($event)" />
 
+    <div *ngIf="previewUrl" style="margin-top: 1rem; text-align: center">
+      <img
+        [src]="previewUrl"
+        alt="Preview"
+        style="
+          max-width: 150px;
+          border-radius: 8px;
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        "
+      />
+    </div>
+
     <button type="submit">Register</button>
   </form>
 </div>
