@@ -34,4 +34,14 @@ export class AuthService {
   isLoggedIn(): boolean {
     return this.getToken() !== null;
   }
+
+  uploadProfilePicture(file: File) {
+    const formData = new FormData();
+    formData.append('file', file);
+
+    return this.http.post<{ url: string }>(
+      'https://localhost:7174/api/users/upload-profile-picture',
+      formData
+    );
+  }
 }
