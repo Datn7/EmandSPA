@@ -1,0 +1,31 @@
+<p>policies works!</p>
+<h2>My Active Policies</h2>
+
+<div *ngIf="loading">Loading policies...</div>
+
+<table *ngIf="!loading && policies.length > 0">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Policy Name</th>
+      <th>Coverage Details</th>
+      <th>Premium</th>
+      <th>Start Date</th>
+      <th>End Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let policy of policies">
+      <td>{{ policy.id }}</td>
+      <td>{{ policy.policyName }}</td>
+      <td>{{ policy.coverageDetails }}</td>
+      <td>{{ policy.premium | currency }}</td>
+      <td>{{ policy.startDate | date : "mediumDate" }}</td>
+      <td>{{ policy.endDate | date : "mediumDate" }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<p *ngIf="!loading && policies.length === 0">
+  You currently have no active policies.
+</p>

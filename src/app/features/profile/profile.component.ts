@@ -7,13 +7,13 @@ import {
 import { AuthService } from '../../core/services/auth.service';
 import { UserProfile } from '../../models/user-profile.model';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import * as L from 'leaflet';
 
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.scss',
 })
