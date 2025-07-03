@@ -19,13 +19,13 @@
       {{ userProfile.longitude }}
     </p>
     <div
-      id="map"
-      style="
-        height: 300px;
-        margin-top: 1rem;
-        border-radius: 8px;
-        overflow: hidden;
+      *ngIf="
+        userProfile &&
+        userProfile.latitude !== undefined &&
+        userProfile.longitude !== undefined
       "
-    ></div>
+    >
+      <div #mapContainer style="height: 400px"></div>
+    </div>
   </div>
 </div>

@@ -1,4 +1,9 @@
-import { Component } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  ViewChild,
+  AfterViewChecked,
+} from '@angular/core';
 import { AuthService } from '../../core/services/auth.service';
 import { UserProfile } from '../../models/user-profile.model';
 import { CommonModule } from '@angular/common';
@@ -7,15 +12,19 @@ import * as L from 'leaflet';
 
 @Component({
   selector: 'app-profile',
+  standalone: true,
   imports: [CommonModule],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.scss',
 })
-export class ProfileComponent {
+export class ProfileComponent implements AfterViewChecked {
   userProfile?: UserProfile;
   loading = true;
   error?: string;
-  private map: L.Map | undefined;
+  private map?: L.Map;
+  private mapInitialized = false;
+
+  @ViewChild('mapContainer') mapContainer?: ElementRef<HTMLDivElement>;
 
   constructor(private authService: AuthService, private router: Router) {}
 
@@ -24,16 +33,7 @@ export class ProfileComponent {
       next: (profile) => {
         this.userProfile = profile;
         this.loading = false;
-
-        // Initialize the map only after userProfile is loaded:
-        if (this.userProfile?.latitude && this.userProfile?.longitude) {
-          setTimeout(() => {
-            this.loadMap(
-              Number(this.userProfile!.latitude),
-              Number(this.userProfile!.longitude)
-            );
-          }, 0);
-        }
+        // Do NOT call loadMap here.
       },
       error: (err) => {
         this.error = 'Failed to load profile. Please try again.';
@@ -42,9 +42,21 @@ export class ProfileComponent {
     });
   }
 
+  ngAfterViewChecked(): void {
+    if (
+      !this.mapInitialized &&
+      this.mapContainer &&
+      this.userProfile?.latitude !== undefined &&
+      this.userProfile?.longitude !== undefined
+    ) {
+      this.loadMap(this.userProfile.latitude, this.userProfile.longitude);
+      this.mapInitialized = true;
+    }
+  }
+
   logout(): void {
     this.authService.logout();
-    this.router.navigate(['/login']); // redirect to login after logout
+    this.router.navigate(['/login']);
   }
 
   isLoggedIn(): boolean {
@@ -52,7 +64,17 @@ export class ProfileComponent {
   }
 
   private loadMap(lat: number, lng: number): void {
-    this.map = L.map('map').setView([lat, lng], 13);
+    if (this.map) {
+      this.map.remove();
+    }
+
+    const container = this.mapContainer?.nativeElement;
+    if (!container) {
+      console.error('Map container not found.');
+      return;
+    }
+
+    this.map = L.map(container).setView([lat, lng], 13);
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 19,
@@ -61,7 +83,7 @@ export class ProfileComponent {
 
     L.marker([lat, lng])
       .addTo(this.map)
-      .bindPopup(`${this.userProfile?.fullName}'s Location`)
+      .bindPopup(`${this.userProfile?.fullName ?? 'User'}'s Location`)
       .openPopup();
   }
 }
