@@ -49,4 +49,10 @@ export class AuthService {
   getUserProfile(): Observable<UserProfile> {
     return this.http.get<UserProfile>(`https://localhost:7174/api/users/me`);
   }
+
+  getUserId(): string {
+    const userString = localStorage.getItem('user');
+    const user = userString ? JSON.parse(userString) : null;
+    return user?.id ?? '';
+  }
 }
