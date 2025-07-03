@@ -16,7 +16,7 @@ export class ClaimsService {
     return this.http.post(`${this.apiUrl}`, claim);
   }
 
-  getClaimsByUser(userId: string): Observable<Claim[]> {
-    return this.http.get<Claim[]>(`${this.apiUrl}/user/${userId}`);
+  getUserClaims(): Observable<Claim[]> {
+    return this.http.get<Claim[]>(`${this.apiUrl}/user`);
   }
 }

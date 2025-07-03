@@ -37,7 +37,7 @@ export class ClaimsComponent implements OnInit {
   ngOnInit(): void {
     const userId = this.authService.getUserId();
     this.loading = true;
-    this.claimsService.getClaimsByUser(userId).subscribe({
+    this.claimsService.getUserClaims().subscribe({
       next: (data) => {
         this.claims = data;
         this.loading = false;
