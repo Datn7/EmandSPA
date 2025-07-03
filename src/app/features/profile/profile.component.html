@@ -10,6 +10,11 @@
   <div class="profile-name">{{ userProfile.fullName }}</div>
   <div class="profile-email">{{ userProfile.email }}</div>
 
+  <div class="profile-actions">
+    <button routerLink="/profile/claims">My Claims</button>
+    <button routerLink="/profile/policies">My Policies</button>
+  </div>
+
   <div class="profile-details">
     <p><span>Date of Birth:</span> {{ userProfile.dateOfBirth | date }}</p>
     <p><span>Gender:</span> {{ userProfile.gender }}</p>
@@ -27,8 +32,6 @@
     >
       <div #mapContainer style="height: 400px"></div>
     </div>
-    <button routerLink="/profile/claims">My Claims</button>
-    <button routerLink="/profile/policies">My Policies</button>
   </div>
 </div>
 
