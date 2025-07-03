@@ -81,7 +81,17 @@ export class ProfileComponent implements AfterViewChecked {
       attribution: '© OpenStreetMap',
     }).addTo(this.map);
 
-    L.marker([lat, lng])
+    const customIcon = L.icon({
+      iconRetinaUrl: 'https://localhost:7174/leaflet/marker-icon-2x.png',
+      iconUrl: 'https://localhost:7174/leaflet/marker-icon.png',
+      shadowUrl: 'https://localhost:7174/leaflet/marker-shadow.png',
+      iconSize: [25, 41],
+      iconAnchor: [12, 41],
+      popupAnchor: [1, -34],
+      shadowSize: [41, 41],
+    });
+
+    L.marker([lat, lng], { icon: customIcon })
       .addTo(this.map)
       .bindPopup(`${this.userProfile?.fullName ?? 'User'}'s Location`)
       .openPopup();
