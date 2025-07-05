@@ -31,6 +31,14 @@
         <a routerLink="/login" routerLinkActive="active-link">Login</a>
         <a routerLink="/register" routerLinkActive="active-link">Register</a>
       </ng-template>
+
+      <button
+        (click)="toggleTheme()"
+        [attr.aria-pressed]="isDarkMode"
+        class="theme-toggle-button"
+      >
+        {{ isDarkMode ? "☀️ Light Mode" : "🌙 Dark Mode" }}
+      </button>
     </div>
   </div>
 </nav>
