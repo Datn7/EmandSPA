@@ -1,54 +1,74 @@
-/* You can add global styles to this file, and also import other style files */
-/* Light Theme Variables */
-:root {
-  --background: #f9fafb;
-  --surface: #ffffff;
-  --border: #e5e7eb;
-  --text: #111827;
-  --muted-text: #6b7280;
-  --primary: #2563eb;
-  --primary-light: #3b82f6;
-  --success: #16a34a;
-  --error: #dc2626;
-  --warning: #d97706;
-}
+/* ================================
+   FORCE DARK MODE FOR ENTIRE SITE
+   ================================ */
 
-/* Dark Theme Variables */
 .dark-theme {
-  --background: #1f2937;
-  --surface: #111827;
-  --border: #374151;
-  --text: #f9fafb;
-  --muted-text: #9ca3af;
-  --primary: #3b82f6;
-  --primary-light: #60a5fa;
-  --success: #22c55e;
-  --error: #ef4444;
-  --warning: #f59e0b;
+  /* Core background and text adjustments */
+  background-color: #111827 !important;
+  color: #f9fafb !important;
 }
 
-/* Example usage */
-body {
-  background-color: var(--background);
-  color: var(--text);
+.dark-theme *,
+.dark-theme *::before,
+.dark-theme *::after {
+  background-color: transparent !important;
+  color: #f9fafb !important;
+  border-color: #374151 !important;
 }
 
-.card {
-  background-color: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 0.5rem;
-  padding: 1rem;
+.dark-theme a {
+  color: #3b82f6 !important;
 }
 
-.button-primary {
-  background-color: var(--primary);
-  color: white;
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
+.dark-theme a:hover {
+  color: #60a5fa !important;
 }
-.button-primary:hover {
-  background-color: var(--primary-light);
+
+.dark-theme button,
+.dark-theme .btn {
+  background-color: #1f2937 !important;
+  color: #f9fafb !important;
+  border: 1px solid #374151 !important;
+}
+
+.dark-theme input,
+.dark-theme textarea,
+.dark-theme select {
+  background-color: #1f2937 !important;
+  color: #f9fafb !important;
+  border: 1px solid #374151 !important;
+}
+
+.dark-theme table,
+.dark-theme th,
+.dark-theme td {
+  background-color: #1f2937 !important;
+  color: #f9fafb !important;
+  border-color: #374151 !important;
+}
+
+.dark-theme .card,
+.dark-theme .modal,
+.dark-theme .dropdown-menu,
+.dark-theme .list-group-item,
+.dark-theme .navbar,
+.dark-theme .footer {
+  background-color: #1f2937 !important;
+  color: #f9fafb !important;
+  border-color: #374151 !important;
+}
+
+.dark-theme .bg-white,
+.dark-theme .bg-light,
+.dark-theme .text-dark,
+.dark-theme .text-body,
+.dark-theme .bg-body {
+  background-color: #1f2937 !important;
+  color: #f9fafb !important;
+}
+
+.dark-theme .shadow,
+.dark-theme .shadow-sm,
+.dark-theme .shadow-lg {
+  box-shadow: none !important;
 }
