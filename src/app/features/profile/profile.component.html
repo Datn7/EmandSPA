@@ -1,40 +1,46 @@
-<div *ngIf="loading" class="loading">Loading profile...</div>
-<div *ngIf="error" class="error-message">{{ error }}</div>
+<div class="profile-layout">
+  <!-- Left: Profile -->
+  <div class="profile-left">
+    <div *ngIf="loading" class="loading">Loading profile...</div>
+    <div *ngIf="error" class="error-message">{{ error }}</div>
 
-<div *ngIf="userProfile" class="profile-card">
-  <img
-    [src]="userProfile.profilePictureUrl || 'assets/default-profile.png'"
-    alt="Profile Picture"
-    class="profile-picture"
-  />
-  <div class="profile-name">{{ userProfile.fullName }}</div>
-  <div class="profile-email">{{ userProfile.email }}</div>
+    <div *ngIf="userProfile" class="profile-card">
+      <img
+        [src]="userProfile.profilePictureUrl || 'assets/default-profile.png'"
+        alt="Profile Picture"
+        class="profile-picture"
+      />
+      <div class="profile-name">{{ userProfile.fullName }}</div>
+      <div class="profile-email">{{ userProfile.email }}</div>
 
-  <div class="profile-actions">
-    <button routerLink="/profile/claims">My Claims</button>
-    <button routerLink="/profile/policies">My Policies</button>
-  </div>
+      <div class="profile-actions">
+        <button routerLink="/profile/claims">My Claims</button>
+        <button routerLink="/profile/policies">My Policies</button>
+      </div>
 
-  <div class="profile-details">
-    <p><span>Date of Birth:</span> {{ userProfile.dateOfBirth | date }}</p>
-    <p><span>Gender:</span> {{ userProfile.gender }}</p>
-    <p><span>Address:</span> {{ userProfile.address }}</p>
-    <p *ngIf="userProfile.latitude && userProfile.longitude">
-      <span>Location:</span> {{ userProfile.latitude }},
-      {{ userProfile.longitude }}
-    </p>
-    <div
-      *ngIf="
-        userProfile &&
-        userProfile.latitude !== undefined &&
-        userProfile.longitude !== undefined
-      "
-    >
-      <div #mapContainer style="height: 400px"></div>
+      <div class="profile-details">
+        <p><span>Date of Birth:</span> {{ userProfile.dateOfBirth | date }}</p>
+        <p><span>Gender:</span> {{ userProfile.gender }}</p>
+        <p><span>Address:</span> {{ userProfile.address }}</p>
+        <p *ngIf="userProfile.latitude && userProfile.longitude">
+          <span>Location:</span> {{ userProfile.latitude }},
+          {{ userProfile.longitude }}
+        </p>
+        <div
+          *ngIf="
+            userProfile &&
+            userProfile.latitude !== undefined &&
+            userProfile.longitude !== undefined
+          "
+        >
+          <div #mapContainer style="height: 300px"></div>
+        </div>
+      </div>
     </div>
   </div>
-</div>
 
-<div style="margin-top: 20px">
-  <router-outlet></router-outlet>
+  <!-- Right: Claims / Policies -->
+  <div class="profile-right">
+    <router-outlet></router-outlet>
+  </div>
 </div>

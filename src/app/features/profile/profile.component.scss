@@ -1,115 +1,104 @@
 :host {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: calc(100vh - 80px); // adjust for navbar height
-  background-color: #f9fbfc;
-  padding: 2rem;
-  font-family: "Segoe UI", sans-serif;
+  display: block;
+  padding: 20px;
+  background: #f9fafb; /* light gray background for app consistency */
+  font-family: "Inter", sans-serif;
 }
 
-.profile-card {
+.profile-layout {
+  display: grid;
+  grid-template-columns: 1fr 2fr; /* 1/3 and 2/3 split */
+  gap: 24px;
+  align-items: start;
+}
+
+.profile-left,
+.profile-right {
   background: #ffffff;
   border-radius: 12px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-  max-width: 480px;
-  width: 100%;
-  padding: 2rem;
-  text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-
-  &:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
-  }
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
 }
 
 .profile-picture {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
+  width: 100px;
+  height: 100px;
   object-fit: cover;
-  border: 4px solid #007bff33;
-  margin-bottom: 1rem;
+  border-radius: 50%;
+  display: block;
+  margin: 0 auto 16px auto;
+  border: 3px solid #0d6efd; /* blue border for branding */
 }
 
 .profile-name {
-  font-size: 1.5rem;
+  text-align: center;
   font-weight: 600;
-  color: #222;
-  margin-bottom: 0.25rem;
+  font-size: 1.3rem;
+  color: #333333;
 }
 
 .profile-email {
-  font-size: 0.95rem;
-  color: #555;
-  margin-bottom: 1rem;
-}
-
-.profile-details {
-  text-align: left;
-  margin-top: 1.5rem;
-
-  p {
-    margin: 0.25rem 0;
-    font-size: 0.95rem;
-    color: #333;
-
-    span {
-      font-weight: 600;
-      color: #007bff;
-    }
-  }
-}
-
-.loading,
-.error-message {
-  font-size: 1.1rem;
-  color: #555;
-  margin-top: 2rem;
   text-align: center;
-}
-
-.error-message {
-  color: #d9534f;
-}
-
-#map {
-  width: 100%;
-  height: 300px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  color: #6b7280; /* subtle gray */
+  margin-bottom: 16px;
+  font-size: 0.95rem;
 }
 
 .profile-actions {
   display: flex;
-  justify-content: center;
-  gap: 0.75rem;
-  margin-top: 1.5rem;
+  gap: 12px;
+  margin-bottom: 16px;
+}
 
-  button {
-    padding: 0.5rem 1rem;
-    font-size: 1rem;
-    background: #007bff;
-    color: #ffffff;
-    border: none;
-    border-radius: 0.375rem;
-    cursor: pointer;
-    font-weight: 600;
-    transition: background 0.3s ease, transform 0.1s ease, box-shadow 0.2s ease;
+.profile-actions button {
+  flex: 1;
+  padding: 10px;
+  cursor: pointer;
+  background: #0d6efd;
+  border: none;
+  color: white;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: background 0.3s, transform 0.1s;
+}
 
-    &:hover {
-      background: #0056b3;
-      box-shadow: 0 2px 6px rgba(0, 123, 255, 0.3);
-    }
+.profile-actions button:hover {
+  background: #0b5ed7;
+  transform: translateY(-1px);
+}
 
-    &:active {
-      transform: scale(0.98);
-    }
+.profile-actions button:active {
+  transform: translateY(0);
+}
 
-    &:focus {
-      outline: none;
-      box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.3);
-    }
+.profile-details span {
+  font-weight: 600;
+  color: #374151; /* dark gray for labels */
+}
+
+.loading,
+.error-message {
+  text-align: center;
+  margin-bottom: 12px;
+  font-weight: 500;
+  color: #dc3545; /* red for error messages */
+}
+
+.profile-details p {
+  margin: 8px 0;
+  color: #444;
+  font-size: 0.95rem;
+}
+
+#mapContainer {
+  border-radius: 8px;
+  overflow: hidden;
+  margin-top: 12px;
+}
+
+@media (max-width: 900px) {
+  .profile-layout {
+    grid-template-columns: 1fr; /* stack on smaller screens */
   }
 }
