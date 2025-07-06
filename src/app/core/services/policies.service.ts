@@ -12,7 +12,7 @@ export class PoliciesService {
 
   constructor(private http: HttpClient) {}
 
-  getPoliciesByUser(userId: string): Observable<Policy[]> {
-    return this.http.get<Policy[]>(`${this.apiUrl}/user/${userId}`);
+  getUserPolicies() {
+    return this.http.get<Policy[]>(this.apiUrl + '/user');
   }
 }

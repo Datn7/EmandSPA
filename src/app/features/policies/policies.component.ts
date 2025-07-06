@@ -21,11 +21,8 @@ export class PoliciesComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const userId = this.authService.getUserId();
-    if (!userId) return;
-
     this.loading = true;
-    this.policiesService.getPoliciesByUser(userId).subscribe({
+    this.policiesService.getUserPolicies().subscribe({
       next: (data) => {
         this.policies = data;
         this.loading = false;
