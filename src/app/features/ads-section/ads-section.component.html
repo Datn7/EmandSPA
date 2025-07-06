@@ -1,9 +1,9 @@
 <section class="ads-section">
   <div class="ads-container">
     <div class="ad-card" *ngFor="let ad of ads">
-      <img [src]="ad.image" [alt]="ad.company" />
-      <h3>{{ ad.company }}</h3>
-      <p>{{ ad.deal }}</p>
+      <img [src]="ad.image" [alt]="ad.company" class="ad-image" />
+      <h3 class="ad-company">{{ ad.company }}</h3>
+      <p class="ad-deal">{{ ad.deal }}</p>
     </div>
   </div>
 </section>
