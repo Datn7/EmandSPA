@@ -5,6 +5,7 @@ import { HeroLandingComponent } from './features/hero-landing/hero-landing.compo
 import { ProfileComponent } from './features/profile/profile.component';
 import { ClaimsComponent } from './features/claims/claims.component';
 import { PoliciesComponent } from './features/policies/policies.component';
+import { ProvidersComponent } from './features/providers/providers.component';
 
 export const routes: Routes = [
   {
@@ -15,6 +16,7 @@ export const routes: Routes = [
     path: 'register',
     component: RegisterComponent,
   },
+  { path: 'providers', component: ProvidersComponent },
   {
     path: 'profile',
     component: ProfileComponent,
