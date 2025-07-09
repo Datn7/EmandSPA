@@ -1,38 +1,50 @@
 .container {
   max-width: 1200px;
   font-family: "Inter", sans-serif;
+  padding: 1rem;
 }
 
 h2 {
-  font-weight: 600;
+  font-weight: 700;
   font-size: 2rem;
   color: #045694;
+  text-align: center;
+}
+
+p.text-center {
+  max-width: 600px;
+  margin: 0 auto 2rem auto;
 }
 
 .card {
   border-radius: 16px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 
   &:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    transform: translateY(-6px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
   }
 
   img {
-    border-top-left-radius: 16px;
-    border-top-right-radius: 16px;
-    object-fit: cover;
+    width: 100%;
     height: 180px;
+    object-fit: cover;
   }
 
   .card-body {
+    flex: 1;
     display: flex;
     flex-direction: column;
-    padding: 1rem;
+    padding: 1.25rem;
   }
 
   .card-title {
-    font-size: 1.1rem;
+    font-size: 1.15rem;
     font-weight: 600;
     color: #212529;
     margin-bottom: 0.5rem;
@@ -40,24 +52,54 @@ h2 {
 
   .card-text {
     font-size: 0.95rem;
+    color: #555;
+    flex-grow: 1;
   }
 
   .btn-primary {
+    align-self: flex-start;
     background-color: #045694;
     border-color: #045694;
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    transition: background-color 0.2s, transform 0.2s;
 
     &:hover {
       background-color: #03406f;
       border-color: #03406f;
+      transform: translateY(-2px);
+    }
+  }
+}
+
+// Responsive tweaks
+@media (max-width: 768px) {
+  .card {
+    img {
+      height: 160px;
+    }
+    .card-title {
+      font-size: 1rem;
+    }
+    .card-text {
+      font-size: 0.9rem;
     }
   }
 }
 
 // Dark mode support
 body.dark-mode {
+  background-color: #121212;
+
   .card {
     background-color: #1f1f1f;
+    border: 1px solid #2c2c2c;
     color: #e0e0e0;
+
+    &:hover {
+      box-shadow: 0 12px 24px rgba(255, 255, 255, 0.08);
+    }
 
     .card-title {
       color: #ffffff;
@@ -70,5 +112,29 @@ body.dark-mode {
 
   h2 {
     color: #68b8ff;
+  }
+}
+
+.btn-primary {
+  align-self: flex-start;
+  background: linear-gradient(135deg, #045694, #0570b0);
+  border: none;
+  color: #ffffff;
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  transition: all 0.2s ease;
+  text-decoration: none;
+
+  &:hover {
+    background: linear-gradient(135deg, #03406f, #045694);
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(4, 86, 148, 0.4);
   }
 }
