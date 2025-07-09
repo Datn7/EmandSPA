@@ -1,1 +1,32 @@
 <p>admin-health-content-list works!</p>
+<div class="admin-health-list-container">
+  <h2>Health Articles</h2>
+  <button class="add-button" (click)="addArticle()">+ Add New Article</button>
+
+  <div *ngIf="loading">Loading articles...</div>
+  <div *ngIf="error" class="error">{{ error }}</div>
+
+  <table *ngIf="!loading && articles.length" class="articles-table">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Category</th>
+        <th>Created At</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let article of articles">
+        <td>{{ article.title }}</td>
+        <td>{{ article.category }}</td>
+        <td>{{ article.createdAt | date: 'mediumDate' }}</td>
+        <td>
+          <button (click)="editArticle(article.id)">Edit</button>
+          <button (click)="deleteArticle(article.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="!loading && !articles.length">No articles found.</div>
+</div>

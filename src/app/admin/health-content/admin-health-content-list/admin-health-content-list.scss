@@ -1,0 +1,83 @@
+.admin-health-list-container {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 1rem;
+  font-family: "Inter", sans-serif;
+
+  h2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #045694;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  .add-button {
+    background-color: #045694;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-bottom: 1rem;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background-color: #03406f;
+    }
+  }
+
+  .error {
+    color: red;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  .articles-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+
+    th,
+    td {
+      padding: 0.75rem 1rem;
+      text-align: left;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    th {
+      background-color: #f7f9fb;
+      font-weight: 600;
+      color: #333;
+    }
+
+    tr:hover {
+      background-color: #f0f4f8;
+    }
+
+    button {
+      background-color: #f0f0f0;
+      border: none;
+      padding: 0.35rem 0.75rem;
+      margin-right: 0.5rem;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+
+      &:hover {
+        background-color: #d9e2ec;
+      }
+
+      &:last-child {
+        background-color: #ffdddd;
+
+        &:hover {
+          background-color: #ffcccc;
+        }
+      }
+    }
+  }
+}
