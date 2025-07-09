@@ -1,1 +1,65 @@
 <p>admin-health-content-form works!</p>
+
+<div class="admin-health-form-container">
+  <h2>{{ isEditMode ? 'Edit Article' : 'Add New Article' }}</h2>
+
+  <form [formGroup]="articleForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label>Title</label>
+      <input formControlName="title" type="text" placeholder="Article title" />
+    </div>
+
+    <div class="form-group">
+      <label>Description</label>
+      <textarea
+        formControlName="description"
+        rows="3"
+        placeholder="Short description"
+      ></textarea>
+    </div>
+
+    <div class="form-group">
+      <label>Content</label>
+      <textarea
+        formControlName="content"
+        rows="6"
+        placeholder="Full article content"
+      ></textarea>
+    </div>
+
+    <div class="form-group">
+      <label>Category</label>
+      <input formControlName="category" type="text" placeholder="Category" />
+    </div>
+
+    <div class="form-group">
+      <label>Tags (comma separated)</label>
+      <input
+        formControlName="tags"
+        type="text"
+        placeholder="tag1, tag2, tag3"
+      />
+    </div>
+
+    <div class="form-group">
+      <label>Image URL</label>
+      <input formControlName="imageUrl" type="text" placeholder="https://..." />
+    </div>
+
+    <div class="form-group">
+      <label>Estimated Read Time (minutes)</label>
+      <input formControlName="readTimeMinutes" type="number" min="1" />
+    </div>
+
+    <div *ngIf="error" class="error">{{ error }}</div>
+
+    <div class="form-actions">
+      <button type="submit" [disabled]="loading || articleForm.invalid">
+        {{ isEditMode ? 'Update' : 'Create' }} Article
+      </button>
+      <button type="button" (click)="cancel()">Cancel</button>
+    </div>
+  </form>
+
+  <div *ngIf="loading" class="loading">Saving...</div>
+</div>

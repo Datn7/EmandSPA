@@ -1,0 +1,90 @@
+.admin-health-form-container {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 1rem;
+  font-family: "Inter", sans-serif;
+
+  h2 {
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #045694;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+
+    label {
+      font-weight: 500;
+      margin-bottom: 0.25rem;
+      color: #333;
+    }
+
+    input,
+    textarea {
+      padding: 0.5rem 0.75rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      transition: border-color 0.2s;
+
+      &:focus {
+        border-color: #045694;
+        outline: none;
+      }
+    }
+  }
+
+  .form-actions {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+
+    button {
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: background-color 0.2s;
+
+      &:first-child {
+        background-color: #045694;
+        color: #fff;
+
+        &:hover {
+          background-color: #03406f;
+        }
+      }
+
+      &:last-child {
+        background-color: #ccc;
+
+        &:hover {
+          background-color: #bbb;
+        }
+      }
+    }
+  }
+
+  .error {
+    color: red;
+    text-align: center;
+    font-size: 0.9rem;
+  }
+
+  .loading {
+    text-align: center;
+    color: #045694;
+    font-weight: 500;
+    margin-top: 1rem;
+  }
+}
