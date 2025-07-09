@@ -6,6 +6,7 @@ import { ProfileComponent } from './features/profile/profile.component';
 import { ClaimsComponent } from './features/claims/claims.component';
 import { PoliciesComponent } from './features/policies/policies.component';
 import { ProvidersComponent } from './features/providers/providers.component';
+import { HealthContentComponent } from './features/health-content/health-content.component';
 
 export const routes: Routes = [
   {
@@ -17,6 +18,7 @@ export const routes: Routes = [
     component: RegisterComponent,
   },
   { path: 'providers', component: ProvidersComponent },
+  { path: 'health-content', component: HealthContentComponent },
   {
     path: 'profile',
     component: ProfileComponent,
